@@ -13,7 +13,7 @@ ARG GITHUB_TOKEN
 
 # Install dependencies
 RUN apt-get update \
-    && apt-get install -y git curl llvm-dev libclang-dev clang unzip \
+    && apt-get install -y git curl llvm-dev libclang-dev clang unzip gdb-multiarch \
     libusb-1.0-0 libssl-dev libudev-dev pkg-config \
     && apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/library-scripts
 
