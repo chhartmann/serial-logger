@@ -34,7 +34,7 @@ ENV PATH=${PATH}:/home/${CONTAINER_USER}/.cargo/bin
 RUN rustup toolchain install nightly --component rust-src
 
 # Install extra crates
-# RUN ARCH=$($HOME/.cargo/bin/rustup show | grep "Default host" | sed -e 's/.* //') && \
+RUN ARCH=$($HOME/.cargo/bin/rustup show | grep "Default host" | sed -e 's/.* //') && \
 #     curl -L "https://github.com/esp-rs/espup/releases/latest/download/espup-${ARCH}" -o "${HOME}/.cargo/bin/espup" && \
 #     chmod u+x "${HOME}/.cargo/bin/espup" && \
 #     curl -L "https://github.com/esp-rs/espflash/releases/latest/download/cargo-espflash-${ARCH}.zip" -o "${HOME}/.cargo/bin/cargo-espflash.zip" && \
@@ -45,10 +45,10 @@ RUN rustup toolchain install nightly --component rust-src
 #     unzip "${HOME}/.cargo/bin/espflash.zip" -d "${HOME}/.cargo/bin/" && \
 #     rm "${HOME}/.cargo/bin/espflash.zip" && \
 #     chmod u+x "${HOME}/.cargo/bin/espflash" && \
-#     curl -L "https://github.com/esp-rs/esp-web-flash-server/releases/latest/download/web-flash-${ARCH}.zip" -o "${HOME}/.cargo/bin/web-flash.zip" && \
-#     unzip "${HOME}/.cargo/bin/web-flash.zip" -d "${HOME}/.cargo/bin/" && \
-#     rm "${HOME}/.cargo/bin/web-flash.zip" && \
-#     chmod u+x "${HOME}/.cargo/bin/web-flash"
+    curl -L "https://github.com/esp-rs/esp-web-flash-server/releases/latest/download/web-flash-${ARCH}.zip" -o "${HOME}/.cargo/bin/web-flash.zip" && \
+    unzip "${HOME}/.cargo/bin/web-flash.zip" -d "${HOME}/.cargo/bin/" && \
+    rm "${HOME}/.cargo/bin/web-flash.zip" && \
+    chmod u+x "${HOME}/.cargo/bin/web-flash"
 
 # Install Xtensa Rust
 # RUN if [ -n "${GITHUB_TOKEN}" ]; then export GITHUB_TOKEN=${GITHUB_TOKEN}; fi  \
