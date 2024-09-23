@@ -32,6 +32,7 @@ ENV PATH=${PATH}:/home/${CONTAINER_USER}/.cargo/bin
 # Toolchain for ESP32-C3
 
 RUN rustup toolchain install nightly --component rust-src
+RUN rustup component add clippy
 
 # Install extra crates
 RUN ARCH=$($HOME/.cargo/bin/rustup show | grep "Default host" | sed -e 's/.* //') && \
