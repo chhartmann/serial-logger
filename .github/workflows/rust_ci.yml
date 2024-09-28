@@ -20,7 +20,6 @@ jobs:
       matrix:
         action:
           - command: build # debug is default - needed for wokwi
-          - command: build
             args: --release
           - command: fmt
             args: --all -- --check --color always
@@ -39,9 +38,12 @@ jobs:
         uses: Swatinem/rust-cache@v2
       - name: Run command
         run: cargo ${{ matrix.action.command }} ${{ matrix.action.args }}
-    wokwi-test:
+  wokwi-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build debug version
+        run: cargo build
       - name: Test with Wokwi
-        needs: rust-checks
         uses: wokwi/wokwi-ci-action@v1
         with:
           token: ${{ secrets.WOKWI_CLI_TOKEN }}
