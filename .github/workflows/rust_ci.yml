@@ -21,6 +21,8 @@ jobs:
         action:
           - command: build
             args: --release
+          - command: build
+            args: --debug # needed for wokwi
           - command: fmt
             args: --all -- --check --color always
           - command: clippy
