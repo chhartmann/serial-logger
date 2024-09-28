@@ -39,7 +39,9 @@ jobs:
         uses: Swatinem/rust-cache@v2
       - name: Run command
         run: cargo ${{ matrix.action.command }} ${{ matrix.action.args }}
+    wokwi-test:
       - name: Test with Wokwi
+        needs: rust-checks
         uses: wokwi/wokwi-ci-action@v1
         with:
           token: ${{ secrets.WOKWI_CLI_TOKEN }}
