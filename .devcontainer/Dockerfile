@@ -30,9 +30,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- \
 ENV PATH=${PATH}:/home/${CONTAINER_USER}/.cargo/bin
 
 # Toolchain for ESP32-C3
-
 RUN rustup toolchain install nightly --component rust-src
-RUN rustup component add clippy
 
 # Install extra crates
 RUN ARCH=$($HOME/.cargo/bin/rustup show | grep "Default host" | sed -e 's/.* //') && \
@@ -61,6 +59,8 @@ RUN ARCH=$($HOME/.cargo/bin/rustup show | grep "Default host" | sed -e 's/.* //'
 
 # Set default toolchain
 RUN rustup default stable
+RUN rustup component add clippy
+RUN rustup component add rustfmt
 
 # Activate ESP environment
 #RUN echo "source /home/${CONTAINER_USER}/export-esp.sh" >> ~/.bashrc
