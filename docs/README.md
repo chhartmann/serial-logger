@@ -1,5 +1,7 @@
 # serial_logger
 
+Playground for Rust embedded with HAL (https://doc.rust-lang.org/beta/embedded-book/portability/index.html)
+
 ## Dev Containers
 This repository offers Dev Containers supports for:
 -  [VS Code Dev Containers](https://code.visualstudio.com/docs/remote/containers#_quick-start-open-an-existing-folder-in-a-container)
